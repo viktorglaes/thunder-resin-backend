@@ -20,6 +20,7 @@ router.post("/submit", async (req, res) => {
       playstyle,
       recommendedWeapons,
       talentOrder,
+      votes,
     } = req.body;
     // submit order
     let newGuide = new Guide({
@@ -31,6 +32,7 @@ router.post("/submit", async (req, res) => {
       playstyle,
       recommendedWeapons,
       talentOrder,
+      votes,
     });
 
     newGuide.save().then((guide) => {
@@ -42,6 +44,14 @@ router.post("/submit", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+router.put("/:guideId", async (req, res) => {
+  await Guide.findById(req.params.guideId, (err, guide) => {
+    guide.votes = req.body.votes;
+    guide.save();
+    res.json(guide);
+  });
 });
 
 module.exports = router;

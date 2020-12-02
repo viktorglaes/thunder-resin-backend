@@ -2,11 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //create user schema
-const PostSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
-  },
+const CommentSchema = new Schema({
   text: {
     type: String,
     required: true,
@@ -23,10 +19,10 @@ const PostSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  votes: {
-    type: Array,
+  branch: {
+    type: Object,
     required: true,
   },
 });
 
-module.exports = Post = mongoose.model("posts", PostSchema);
+module.exports = Comment = mongoose.model("comments", CommentSchema);

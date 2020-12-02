@@ -55,6 +55,10 @@ app.use("/api/weapons", weapons);
 const guides = require("./routes/api/guides");
 app.use("/api/guides", guides);
 
+//feedback route
+const comments = require("./routes/api/comments");
+app.use("/api/comments", comments);
+
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "public/index.html"));
 // });

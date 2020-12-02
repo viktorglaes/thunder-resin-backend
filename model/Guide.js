@@ -39,6 +39,10 @@ const GuideSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  votes: {
+    type: Array,
+    required: true,
+  },
 });
 
 module.exports = Guide = mongoose.model("guides", GuideSchema);
