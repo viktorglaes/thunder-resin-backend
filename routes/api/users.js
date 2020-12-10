@@ -21,7 +21,13 @@ const { restart } = require("nodemon");
 
 router.post("/register", async (req, res) => {
   try {
-    let { username, email, password, confirm_password } = req.body;
+    let {
+      username,
+      email,
+      password,
+      confirm_password,
+      favorite_character,
+    } = req.body;
 
     if (password !== confirm_password) {
       return res.status(400).json({
@@ -51,6 +57,7 @@ router.post("/register", async (req, res) => {
       username,
       password,
       email,
+      favorite_character,
     });
 
     //hash password
@@ -128,6 +135,14 @@ router.get(
     });
   }
 );
+
+router.put("/:userId", async (req, res) => {
+  await User.findById(req.params.userId, (err, user) => {
+    user.favorite_character = req.body.favorite_character;
+    user.save();
+    res.json(user);
+  });
+});
 
 //write patch request for addresses
 

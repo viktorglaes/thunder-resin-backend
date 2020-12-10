@@ -19,6 +19,10 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  favorite_character: {
+    type: Object,
+    required: false,
+  },
 });
 
 module.exports = User = mongoose.model("users", UserSchema);

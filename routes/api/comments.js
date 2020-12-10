@@ -26,7 +26,7 @@ router.post("/create", async (req, res) => {
 
 router.get("/", async (req, res) => {
   let id = req.query.id;
-  await Comment.find({ "branch.id": id }).then((data) => {
+  await Comment.find({ "branch._id": id }).then((data) => {
     res.send(data);
   });
 });
