@@ -59,9 +59,9 @@ app.use("/api/guides", guides);
 const comments = require("./routes/api/comments");
 app.use("/api/comments", comments);
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "public/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/index.html"));
+});
 
 const PORT = process.env.PORT || 5000;
 
